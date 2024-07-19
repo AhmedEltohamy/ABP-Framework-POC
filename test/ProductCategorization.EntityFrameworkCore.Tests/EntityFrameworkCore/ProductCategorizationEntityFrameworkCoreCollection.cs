@@ -1,0 +1,9 @@
+﻿using Xunit;
+
+namespace ProductCategorization.EntityFrameworkCore;
+
+[CollectionDefinition(ProductCategorizationTestConsts.CollectionDefinitionName)]
+public class ProductCategorizationEntityFrameworkCoreCollection : ICollectionFixture<ProductCategorizationEntityFrameworkCoreFixture>
+{
+
+}
