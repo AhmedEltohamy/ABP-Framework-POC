@@ -1,4 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ProductCategorization.Categories;
+using ProductCategorization.Products;
+using System.Reflection;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
 using Volo.Abp.Data;
@@ -24,6 +27,8 @@ public class ProductCategorizationDbContext :
     ITenantManagementDbContext
 {
     /* Add DbSet properties for your Aggregate Roots / Entities here. */
+    public DbSet<Product> Products { get; set; }
+    public DbSet<Category> Categories { get; set; }
 
     #region Entities from the modules
 
@@ -73,6 +78,8 @@ public class ProductCategorizationDbContext :
         builder.ConfigureOpenIddict();
         builder.ConfigureFeatureManagement();
         builder.ConfigureTenantManagement();
+
+        builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
         /* Configure your own tables/entities inside here */
 
